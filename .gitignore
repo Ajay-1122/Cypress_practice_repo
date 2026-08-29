@@ -1,0 +1,5 @@
+cypress\videos
+cypress\screenshots
+cypress\results
+cypress\downloads
+node_modules

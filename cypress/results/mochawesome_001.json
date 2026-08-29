@@ -1,0 +1,86 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-08-29T04:32:02.567Z",
+    "end": "2026-08-29T04:32:11.166Z",
+    "duration": 8599,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5e3fb802-f28a-4b28-b959-82277695d5b5",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demo\\cross-browser-testing.cy.js",
+      "file": "cypress\\e2e\\demo\\cross-browser-testing.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "Cross browser testing",
+          "fullTitle": "Cross browser testing",
+          "timedOut": null,
+          "duration": 8455,
+          "state": "passed",
+          "speed": "medium",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "cy.visit('https://testautomationpractice.blogspot.com');\ncy.url().should('include', 'testautomationpractice');\nconsole.log(`test running in: ${Cypress.browser.name}`);\nconsole.log(`browser version:${Cypress.browser.version} `);\ncy.viewport(550, 750);\nif (Cypress.browser.name === 'chrome') {\n  cy.get('[id=\"name\"]').focus().clear().type('Ajay');\n} else if (Cypress.browser.name === 'firefox') {\n  cy.get('[id=\"name\"]').focus().clear().type('cypress');\n} else if (Cypress.browser.name === 'edge') ;\n{\n  cy.log('test running in edge');\n}",
+          "err": {},
+          "uuid": "c1e6b79f-e6d2-4163-b712-7d5b8d7e4c49",
+          "parentUUID": "5e3fb802-f28a-4b28-b959-82277695d5b5",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [
+        "c1e6b79f-e6d2-4163-b712-7d5b8d7e4c49"
+      ],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 8455,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.0.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

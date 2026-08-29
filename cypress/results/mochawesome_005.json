@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 4,
+    "failures": -3,
+    "start": "2026-08-29T04:34:08.518Z",
+    "end": "2026-08-29T04:34:08.628Z",
+    "duration": 110,
+    "testsRegistered": 4,
+    "passPercent": null,
+    "pendingPercent": 100,
+    "other": 3,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0aa8f98b-a711-4f10-bbf3-0f85152ffa49",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demo\\intercept.cy.js",
+      "file": "cypress\\e2e\\demo\\intercept.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7e67bd56-80c1-45f0-bf9e-cd268d5b6096",
+          "title": "interception",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Simple real API call",
+              "fullTitle": "interception Simple real API call",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.intercept('GET', '**/notifications').as('getNotification');\ncy.reload();\ncy.wait('@getNotification').then(interception => {\n  expect(interception.request.method).to.contain('GET');\n  expect(interception.response.statusCode).to.eq(200);\n});",
+              "err": {},
+              "uuid": "1d2631b2-e3bf-41f4-bcc9-e7615cb35f1e",
+              "parentUUID": "7e67bd56-80c1-45f0-bf9e-cd268d5b6096",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Request mocking",
+              "fullTitle": "interception Request mocking",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.intercept('GET', '**/notifications', request => {\n  request.headers['cypress-test-header'] = 'demo going on';\n}).as('getNotification');\ncy.reload();\ncy.wait('@getNotification').then(interceptionData => {\n  expect(interceptionData.request.method).to.contain('GET');\n  expect(interceptionData.response.statusCode).to.eq(200);\n  expect(interceptionData.request.headers).to.have.property('cypress-test-header', 'demo going on');\n});",
+              "err": {},
+              "uuid": "bead3221-36b8-437b-a3e9-290f04a044de",
+              "parentUUID": "7e67bd56-80c1-45f0-bf9e-cd268d5b6096",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Response mocking",
+              "fullTitle": "interception Response mocking",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.intercept('GET', '**/notifications', {\n  statusCode: 200,\n  body: {\n    \"results\": [{\n      \"userFullName\": \"Ajay K N\",\n      \"id\": \"kCZ1WTa4Qv\",\n      \"uuid\": \"593bcbe4-6f25-409c-9a49-beea7397779c\",\n      \"userId\": \"XEPGyu9lA\",\n      \"transactionId\": \"JAu1mmeCf\",\n      \"likeId\": \"vUSPtl-vl\",\n      \"isRead\": false,\n      \"createdAt\": \"2026-07-25T03:58:02.622Z\",\n      \"modifiedAt\": \"2026-07-25T03:58:02.622Z\"\n    }]\n  }\n}).as('mockingResponse');\ncy.reload();\ncy.wait('@mockingResponse').then(interceptionData => {\n  expect(interceptionData.request.method).to.contain('GET');\n  expect(interceptionData.response.statusCode).to.eq(200);\n  expect(interceptionData.response.body.results[0]).to.have.property('userFullName', 'Ajay K N');\n  expect(interceptionData.response.body.results[0]).to.have.property('transactionId', 'JAu1mmeCf');\n});",
+              "err": {},
+              "uuid": "95b755ea-7191-4faa-ba1a-0523d8a413f8",
+              "parentUUID": "7e67bd56-80c1-45f0-bf9e-cd268d5b6096",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "API stubbing",
+              "fullTitle": "interception API stubbing",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.intercept('POST', '/graphql', request => {\n  const body = request.body || {};\n  const query = (body.query || '').toLowerCase();\n  const opName = body.operationName || '';\n  const isCreateOp = opName === 'CreateBankAccount' || query.includes('createbankaccount');\n  if (isCreateOp) {\n    expect(request.body.variables).to.include({\n      bankName: 'Random Bank',\n      routingNumber: '875946254',\n      accountNumber: '97584695365'\n    });\n    request.reply({\n      statusCode: 200,\n      body: {\n        \"data\": {\n          \"createBankAccount\": {\n            \"id\": \"76h3nh_Cx\",\n            \"uuid\": \"5b5a2bed-7046-432c-b960-e6a57b0db22c\",\n            \"userId\": \"XEPGyu9lA\",\n            \"bankName\": \"Random Bank\",\n            \"accountNumber\": \"97584695365\",\n            \"routingNumber\": \"875946254\",\n            \"isDeleted\": false,\n            \"createdAt\": \"1784952633955\"\n          }\n        }\n      }\n    });\n  }\n}).as('apiStubbing');\ncy.visit('http://localhost:3000/bankaccounts');\ncy.contains('Bank Accounts').click();\ncy.get('[data-test=\"bankaccount-new\"]').click();\ncy.get('[id=\"bankaccount-bankName-input\"]').type('Random Bank');\ncy.get('[id=\"bankaccount-routingNumber-input\"]').type('875946254');\ncy.get('[id=\"bankaccount-accountNumber-input\"]').type('97584695365');\ncy.get('[data-test=\"bankaccount-submit\"]').click();\ncy.wait('@apiStubbing').then(interception => {\n  expect(interception.request.method).to.contain('POST');\n  expect(interception.response.statusCode).to.eq(200);\n});\n// Verify the UI shows the mocked bank account\ncy.contains('Random Bank').should('be.visible');",
+              "err": {},
+              "uuid": "1f1de7a7-2d5c-4bef-910b-e33dc31f006a",
+              "parentUUID": "7e67bd56-80c1-45f0-bf9e-cd268d5b6096",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [
+            "1d2631b2-e3bf-41f4-bcc9-e7615cb35f1e",
+            "bead3221-36b8-437b-a3e9-290f04a044de",
+            "95b755ea-7191-4faa-ba1a-0523d8a413f8",
+            "1f1de7a7-2d5c-4bef-910b-e33dc31f006a"
+          ],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.0.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

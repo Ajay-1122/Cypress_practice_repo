@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-08-29T04:35:38.738Z",
+    "end": "2026-08-29T04:35:39.960Z",
+    "duration": 1222,
+    "testsRegistered": 3,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 2,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "408ea8e1-b8de-43ca-a6e8-e067accd87a2",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demo\\sessions.cy.js",
+      "file": "cypress\\e2e\\demo\\sessions.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4e051be4-5ccb-4184-ac4b-49f8c7d7c33e",
+          "title": "Handling sessions",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Assert logged in session",
+              "fullTitle": "Handling sessions Assert logged in session",
+              "timedOut": null,
+              "duration": 946,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://practicetestautomation.com/logged-in-successfully/');\ncy.contains('Logged In Successfully').should('be.visible');",
+              "err": {
+                "message": "TypeError: cy.LoginSession is not a function\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Handling sessions`",
+                "estack": "TypeError: cy.LoginSession is not a function\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Handling sessions`\n    at Object.eval [as setup] (webpack:///./cypress/e2e/demo/sessions.cy.js:6:15)\n    at Context.<anonymous> (https://testautomationpractice.blogspot.com/__cypress/runner/cypress_runner.js:136942:38)\n    at getRet (https://testautomationpractice.blogspot.com/__cypress/runner/cypress_runner.js:123004:20)\n    at tryCatcher (https://testautomationpractice.blogspot.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://testautomationpractice.blogspot.com/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://testautomationpractice.blogspot.com/__cypress/runner/cypress_runner.js:123015:66)\n    at Context.then (https://testautomationpractice.blogspot.com/__cypress/runner/cypress_runner.js:123266:21)\n    at wrapped (https://testautomationpractice.blogspot.com/__cypress/runner/cypress_runner.js:146625:19)\n    at <unknown> (https://testautomationpractice.blogspot.com/__cypress/runner/cypress_runner.js:152656:15)",
+                "diff": null
+              },
+              "uuid": "4a0bd1cd-d84d-46bd-95b9-358010d91842",
+              "parentUUID": "4e051be4-5ccb-4184-ac4b-49f8c7d7c33e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Assert logged in session",
+              "fullTitle": "Handling sessions Assert logged in session",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://practicetestautomation.com/logged-in-successfully/');\ncy.contains('Logged In Successfully').should('be.visible');",
+              "err": {},
+              "uuid": "fccb7d15-ece3-48d3-9fff-825d2f9510c2",
+              "parentUUID": "4e051be4-5ccb-4184-ac4b-49f8c7d7c33e",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Assert logged in session and logout",
+              "fullTitle": "Handling sessions Assert logged in session and logout",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://practicetestautomation.com/logged-in-successfully/');\ncy.contains('Log out').click();",
+              "err": {},
+              "uuid": "4bbdefcc-329f-43e0-80da-bc0cd0df3482",
+              "parentUUID": "4e051be4-5ccb-4184-ac4b-49f8c7d7c33e",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "4a0bd1cd-d84d-46bd-95b9-358010d91842"
+          ],
+          "pending": [],
+          "skipped": [
+            "fccb7d15-ece3-48d3-9fff-825d2f9510c2",
+            "4bbdefcc-329f-43e0-80da-bc0cd0df3482"
+          ],
+          "duration": 946,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.0.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-08-29T04:34:15.098Z",
+    "end": "2026-08-29T04:34:16.874Z",
+    "duration": 1776,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ac087eb4-78f1-4c3f-bab5-5ee581412d34",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demo\\jwtToken.cy.js",
+      "file": "cypress\\e2e\\demo\\jwtToken.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "92873519-6b77-4aa2-9293-7dd9fdcd5dcb",
+          "title": "handling jwt",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "stores the token in localStorage and uses it for a protected endpoint",
+              "fullTitle": "handling jwt stores the token in localStorage and uses it for a protected endpoint",
+              "timedOut": null,
+              "duration": 1593,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.window().then(win => {\n  const storedToken = win.localStorage.getItem('jwtToken');\n  expect(storedToken).to.eq(accessToken);\n  cy.request({\n    method: 'GET',\n    url: 'https://dummyjson.com/auth/me',\n    headers: {\n      Authorization: `Bearer ${storedToken}`\n    }\n  }).then(authenticatedResponse => {\n    expect(authenticatedResponse.status).to.eq(200);\n    expect(authenticatedResponse.body.username).to.eq('emilys');\n  });\n});",
+              "err": {},
+              "uuid": "4369e648-e7aa-43b4-aa44-a44b5ef0777a",
+              "parentUUID": "92873519-6b77-4aa2-9293-7dd9fdcd5dcb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4369e648-e7aa-43b4-aa44-a44b5ef0777a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1593,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.0.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-08-29T04:33:35.833Z",
+    "end": "2026-08-29T04:33:49.606Z",
+    "duration": 13773,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b22a28e8-520f-4764-a15d-32f9ed1ddb65",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demo\\dataEntyForm.cy.js",
+      "file": "cypress\\e2e\\demo\\dataEntyForm.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "273bbc0c-d849-4e48-a446-88156b1fcb70",
+          "title": "Enter details and filling the form ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "data entry form",
+              "fullTitle": "Enter details and filling the form  data entry form",
+              "timedOut": null,
+              "duration": 13322,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "console.log(`test running in: ${Cypress.browser.name}`);\nconsole.log(`browser version:${Cypress.browser.version} `);\ncy.viewport(550, 750);\nif (Cypress.browser.name === 'chrome') {\n  cy.get('[id=\"name\"]').focus().clear().type('Ajay');\n}\ncy.get('[class=\"titlewrapper\"]').should('have.text', '\\n\\nAutomation Testing Practice\\n\\n');\ncy.get('[id=\"name\"]').focus().clear().type('Ajay');\ncy.get('[id=\"name\"]').invoke('val').then(nameValue => {\n  assert.equal(nameValue, 'Ajay', 'Name input value is incorrect');\n});\ncy.get('[id=\"email\"]').focus().type('example@test.com');\ncy.get('#email').invoke('val').then(emailValue => {\n  expect(emailValue).to.equal('example@test.com');\n});\ncy.get('[id=\"phone\"]').focus().type(7353847394);\ncy.get('[id=\"textarea\"]').focus().type('my address');\ncy.get('[id=\"textarea\"]').invoke('val').then(textValue => {\n  assert.equal(textValue, 'my address', 'Text area input value is incorrect');\n});\ncy.get('[id=\"male\"]').check();\n// cy.reload()\ncy.get('[id=\"monday\"]').check();\ncy.get('[id=\"country\"]').select('India');\ncy.get('select').eq(1).focus().select('Blue');\ncy.get('input[id=\"datepicker\"]').type('05/06/2026');\ncy.get('[id=\"start-date\"]').type('2026-02-25');\ncy.get('[id=\"end-date\"]').type('2026-03-26');\ncy.get('[class=\"submit-btn\"]').click();\ncy.get('[id=\"result\"]').should('be.visible');",
+              "err": {},
+              "uuid": "beaef563-4f74-45f8-b8ac-d68cc023734e",
+              "parentUUID": "273bbc0c-d849-4e48-a446-88156b1fcb70",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "beaef563-4f74-45f8-b8ac-d68cc023734e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 13322,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.0.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

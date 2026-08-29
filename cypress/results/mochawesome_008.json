@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 5,
+    "failures": -4,
+    "start": "2026-08-29T04:34:40.346Z",
+    "end": "2026-08-29T04:34:40.446Z",
+    "duration": 100,
+    "testsRegistered": 5,
+    "passPercent": null,
+    "pendingPercent": 100,
+    "other": 4,
+    "hasOther": true,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c01c3e08-a55a-4396-96a1-824feb49fd30",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demo\\mySqlDatabase.cy.js",
+      "file": "cypress\\e2e\\demo\\mySqlDatabase.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "087485b8-c4da-4186-9130-39cc7bf9818e",
+          "title": "MySQL database testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "retrieve data with SELECT and LIMIT",
+              "fullTitle": "MySQL database testing retrieve data with SELECT and LIMIT",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.task('queryDatabase', 'SELECT id, name, role FROM DemoTable ORDER BY id LIMIT 1;').then(result => {\n  expect(result).to.be.an('array');\n  expect(result).to.have.length.of.at.least(1);\n  expect(result[0]).to.have.property('name', 'John');\n});",
+              "err": {},
+              "uuid": "be8ff278-93aa-42b1-b961-fa8f0cc0fb70",
+              "parentUUID": "087485b8-c4da-4186-9130-39cc7bf9818e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "filter data with WHERE",
+              "fullTitle": "MySQL database testing filter data with WHERE",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.task('queryDatabase', 'SELECT id, name, role FROM DemoTable WHERE id = 2;').then(result => {\n  expect(result).to.be.an('array');\n  expect(result).to.have.length(1);\n});",
+              "err": {},
+              "uuid": "b70051c5-5932-4110-93fe-0ef0f7859004",
+              "parentUUID": "087485b8-c4da-4186-9130-39cc7bf9818e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "INSERT new record",
+              "fullTitle": "MySQL database testing INSERT new record",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.task('queryDatabase', \"INSERT INTO DemoTable (id, name, role) VALUES (4, 'Meera', 'QA Engineer')\").then(insertedResult => {\n  expect(insertedResult).to.have.property('affectedRows', 1);\n  cy.task('queryDatabase', 'SELECT id, name, role FROM DemoTable WHERE id = 4').then(insertedRow => {\n    expect(insertedRow).to.have.length(1);\n    expect(insertedRow[0]).to.have.property('name', 'Meera');\n    expect(insertedRow[0]).to.include({\n      id: 4,\n      name: 'Meera',\n      role: 'QA Engineer'\n    });\n  });\n});",
+              "err": {},
+              "uuid": "ca540432-c442-48ad-978e-26c7c93b1134",
+              "parentUUID": "087485b8-c4da-4186-9130-39cc7bf9818e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "UPDATE row",
+              "fullTitle": "MySQL database testing UPDATE row",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.task('queryDatabase', \"UPDATE DemoTable SET role = 'Senior Tester' WHERE id = 4\").then(result => {\n  expect(result).to.have.property('affectedRows', 1);\n  cy.task('queryDatabase', 'SELECT * FROM DemoTable WHERE id = 4').then(updatedResult => {\n    expect(updatedResult[0]).to.have.property('role', 'Senior Tester');\n  });\n});",
+              "err": {},
+              "uuid": "d177341c-5370-4dcc-8977-1a7bd5ba38d0",
+              "parentUUID": "087485b8-c4da-4186-9130-39cc7bf9818e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "DELETE the row",
+              "fullTitle": "MySQL database testing DELETE the row",
+              "timedOut": null,
+              "duration": 0,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": true,
+              "context": null,
+              "code": "cy.task('queryDatabase', 'DELETE FROM DemoTable WHERE id = 4').then(result => {\n  expect(result).to.have.property('affectedRows', 1);\n  cy.task('queryDatabase', 'SELECT * FROM DemoTable WHERE id = 4').then(deletedRow => {\n    expect(deletedRow).to.have.length(0);\n  });\n});",
+              "err": {},
+              "uuid": "eb086e68-9d65-40c5-9333-e625c61078d2",
+              "parentUUID": "087485b8-c4da-4186-9130-39cc7bf9818e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [
+            "be8ff278-93aa-42b1-b961-fa8f0cc0fb70",
+            "b70051c5-5932-4110-93fe-0ef0f7859004",
+            "ca540432-c442-48ad-978e-26c7c93b1134",
+            "d177341c-5370-4dcc-8977-1a7bd5ba38d0",
+            "eb086e68-9d65-40c5-9333-e625c61078d2"
+          ],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.0.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
