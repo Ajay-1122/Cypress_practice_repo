@@ -53,6 +53,12 @@ Cypress.Commands.add('fillDataEntryForm', (user) => {
 
 })
 
+Cypress.Commands.add('generateRandomEmail', () => {
+  const randomNum = Math.ceil(Math.random() * 1000) // 123.64 - round up to 123, Ceil - rounds above the value
+  const dynamicEmail = `example${randomNum}@test.com`
+  return dynamicEmail
+})
+
 Cypress.Commands.add('getIframeBody', (iframeSelector) => {
   return cy
     .get(iframeSelector)
@@ -76,6 +82,17 @@ Cypress.Commands.add('Logout', ()=>{
   cy.get('[id="login"]').should('be.visible')
 })
 
+Cypress.Commands.add('LoginSession', () => {
+    cy.visit('https://practicetestautomation.com/practice-test-login/')
+    cy.get('[id="login"]').should('be.visible')
+    cy.get('[id="username"]').focus()
+        .type('student')
+    cy.get('[id="password"]').focus().type('Password123')
+
+    cy.get('[id="submit"]').click()
+    cy.get('[class="post-title"]').should('be.visible')
+        .should('have.text', 'Logged In Successfully')
+})
 
 Cypress.Commands.add('loginPractice', () => {
    cy.visit('https://practicetestautomation.com/practice-test-login')

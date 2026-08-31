@@ -4,43 +4,41 @@ import {myData} from '../../fixtures/data'
 //  ../ - parent level - one level up
 
 it("data entry form", ()=>{
+    
+    cy.visit('/')
+    cy.url().should('include', 'testautomationpractice')
 
-    const base_url = cy.env('baseUrl')
-
-        cy.visit(base_url)
-        cy.url().should('include', 'testautomationpractice')
-
-        cy.get('[class="titlewrapper"]').should('have.text', '\n\nAutomation Testing Practice\n\n')
+    cy.get('[class="titlewrapper"]').should('have.text', '\n\nAutomation Testing Practice\n\n')
 
 
-        cy.fixture("dataEntryInputs").then((data) => {
+    cy.fixture("dataEntryInputs").then((data) => {
 
-        cy.get('[id="name"]').focus()
-            .clear()
-            .type(data.name)
+    cy.get('[id="name"]').focus()
+        .clear()
+        .type(data.name)
 
-        cy.get('[id="email"]').focus()
-            .type(data.email)
+    cy.get('[id="email"]').focus()
+        .type(data.email)
 
-        cy.get('[id="phone"]').focus()
-            .type(data.phone)
+    cy.get('[id="phone"]').focus()
+        .type(data.phone)
 
-        cy.get('[id="textarea"]').focus()
-            .type(data.address)
+    cy.get('[id="textarea"]').focus()
+        .type(data.address)
 
-        cy.get(`#${data.gender}`).check()
+    cy.get(`#${data.gender}`).check()
 
-        cy.get(`#${data.day}`).check()
+    cy.get(`#${data.day}`).check()
 
-        cy.get('[id="country"]').select(data.country)
+    cy.get('[id="country"]').select(data.country)
 
 
-        cy.get('input[id="datepicker"]').type(data.date1)
+    cy.get('input[id="datepicker"]').type(data.date1)
 
-        cy.get('[id="start-date"]').type(data.startDate)
-        cy.get('[id="end-date"]').type(data.endDate)
+    cy.get('[id="start-date"]').type(data.startDate)
+    cy.get('[id="end-date"]').type(data.endDate)
 
-        cy.get('[class="submit-btn"]').click()
+    cy.get('[class="submit-btn"]').click()
     })
 
 }) 
@@ -84,7 +82,7 @@ it('data driven testing', ()=>{
             .clear()
             .type(user.name)
 
-        cy.get('[id="email"]').focus()
+        cy.get('[id="email"]').clear().focus()
             .type(user.email)
 
     })
@@ -130,7 +128,7 @@ it('data driven testing', ()=>{
 const randomNum = Math.ceil(Math.random() * 1000) // 123.64 - round up to 123, Ceil - rounds above the value
 const dynamicEmail = `example${randomNum}@test.com`
 
-it.only('data driven testing', ()=>{
+it('data driven testing - pass data during run time', ()=>{
 
     cy.visit('https://testautomationpractice.blogspot.com')
     cy.url().should('include', 'testautomationpractice')
@@ -142,7 +140,7 @@ it.only('data driven testing', ()=>{
     const mail = cy.generateRandomEmail()
 
     cy.get('[id="email"]').focus()
-        .type(mail)
+        .type(String(mail))
 
 
 })

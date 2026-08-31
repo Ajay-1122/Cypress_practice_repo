@@ -58,7 +58,7 @@ const testData1 = [
         Email : "gayathri@test1.com",
         Phone : "00000000",
         Address : "Kerala, India    ",
-        Gender : "Female",
+        Gender : "female",
         Day : "tuesday",
         Country : "India",
         Colors:"Blue",
