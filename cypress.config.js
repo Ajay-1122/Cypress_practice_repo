@@ -19,6 +19,9 @@ module.exports = defineConfig({
 
   reporter: 'mochawesome',
 
+
+  // Configuration for single spec file HTML report
+
   // reporterOptions : {
   //   reportDir: 'cypress/results',
   //   overwrite: true,
@@ -26,6 +29,7 @@ module.exports = defineConfig({
   //   json: false,
   // },
 
+  //Configuration for single report with all spec file results
   reporterOptions : {
     reportDir: 'cypress/results',
     overwrite: false,
