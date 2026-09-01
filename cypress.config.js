@@ -22,6 +22,7 @@ module.exports = defineConfig({
 
   // Configuration for single spec file HTML report
 
+  
   // reporterOptions : {
   //   reportDir: 'cypress/results',
   //   overwrite: true,
