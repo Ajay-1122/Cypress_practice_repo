@@ -1,0 +1,23 @@
+image:
+  name: cypress/included:15.17.0
+  entrypoint: [""]
+
+stages:
+  - test
+
+cypress_tests:
+  stage: test
+
+  script:
+    - node --version
+    - npm --version
+    - npx cypress --version
+    - npx cypress run --browser chrome --reporter spec
+
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - cypress/screenshots/
+      - cypress/videos/
+      - cypress/results/
