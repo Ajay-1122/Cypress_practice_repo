@@ -12,7 +12,9 @@ describe.only('Enter details and filling the form ', () =>{
 
         // const base_Url = cy.env(baseUrl) || 'https://testautomationpractice.blogspot.com'
 
-        cy.visit('https://testautomationpractice.blogspot.com')
+        // cy.visit(Cypress.env('PROD_URL')) // Base url from the env variable
+
+        cy.visit('/')
         cy.url().should('include', 'testautomationpractice')
     })
 

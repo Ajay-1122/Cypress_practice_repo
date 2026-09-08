@@ -1,10 +1,16 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require("cypress")
 const fs = require('fs')
 const path = require('path')
 const mysql = require('mysql2/promise')
 const sqlServer = require('cypress-sql-server')
+const createBundler = require('@bahmutov/cypress-esbuild-preprocessor')
+
+const { addCucumberPreprocessorPlugin, } = require('@badeball/cypress-cucumber-preprocessor')
+
+const { createEsbuildPlugin, } = require('@badeball/cypress-cucumber-preprocessor/esbuild')
 
 module.exports = defineConfig({
+  projectId: 'okto7z',
   allowCypressEnv: false,
   pageLoadTimeout: 60000,
   defaultCommandTimeout: 6000,
@@ -18,6 +24,8 @@ module.exports = defineConfig({
   videosFolder: 'cypress/videos',
 
   reporter: 'mochawesome',
+
+  retries: 1,
 
 
   // Configuration for single spec file HTML report
@@ -38,14 +46,18 @@ module.exports = defineConfig({
     json: true,
   },
 
+  env: {
+    PROD_URL: 'https://testautomationpractice.blogspot.com',
+  },
+
   e2e: {
     baseUrl: 'https://testautomationpractice.blogspot.com',
     testIsolation: true,
-    specPattern: '**/*.cy.js',
+    specPattern: ['**/*.cy.js', '**/*.feature'],
     excludeSpecPattern: '**/*.cy.ts',
 
 
-    setupNodeEvents(on, config) {
+    async setupNodeEvents(on, config) {
 
       on('task', {
         async queryDatabase(query) {
@@ -66,6 +78,15 @@ module.exports = defineConfig({
           }
         }
       })
+
+      await addCucumberPreprocessorPlugin(on, config)
+
+        on(
+            'file:preprocessor',
+            createBundler({
+              plugins: [createEsbuildPlugin(config)],
+            })
+          )
 
       return config
 
